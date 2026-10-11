@@ -116,6 +116,12 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {{
     visibility: hidden;
 }}
 
+
+[data-testid="stHeader"] {{
+    background: var(--bg) !important;
+}}
+
+
 .block-container {{
     padding-top: 2rem;
     max-width: 1180px;
