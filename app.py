@@ -620,7 +620,7 @@ div[data-baseweb="popover"]:has([data-testid="stPopoverBody"]) > div {{
     [data-testid="stHeader"] {{
         background: var(--bg) !important;
     }}
-}
+}}
 </style>
 """,
     unsafe_allow_html=True,
