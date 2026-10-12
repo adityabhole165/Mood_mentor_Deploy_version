@@ -614,6 +614,9 @@ div[data-baseweb="popover"]:has([data-testid="stPopoverBody"]) > div {{
 @media (max-width: 700px) {{
     .hero {{ padding: 1.3rem; }}
     .hero h1 {{ font-size: 1.6rem; }}
+    [data-testid="stHeader"] {
+       background: var(--bg) !important;
+    }
 }}
 </style>
 """,
