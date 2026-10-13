@@ -1801,13 +1801,6 @@ def page_overview(user_id):
         else:
             st.caption("Nothing recorded yet.")
 
-    if health is not None:
-        stats = safe(api_request, "GET", "/stats", quiet=True)
-        if stats:
-            with st.expander("Service-wide counters"):
-                st.json(stats)
-                st.caption("These counters may cover all users of the API, not only your account.")
-
 
 # ----- Analyze page helpers -----
 def apply_example():
@@ -2066,9 +2059,6 @@ def show_results(user_id):
 
     render_result(results[index]["result"], user_id)
 
-    with st.expander("Full API response"):
-        st.json(results[index]["result"])
-
     download_payload = (
         results[0]["result"]
         if len(results) == 1
@@ -2150,21 +2140,6 @@ def page_analyze(user_id, preferences):
                 st.toast("Analysis complete")
 
     show_results(user_id)
-
-    st.divider()
-    with st.expander("Verify input methods (self-test)"):
-        st.caption(
-            "Checks typed text, .txt and .csv handling, validation and preprocessing "
-            "locally. No text is sent to the API."
-        )
-        if st.button("Run self-test", key="selftest_btn"):
-            rows = run_input_self_test()
-            passed = sum(1 for row in rows if row["Status"].startswith("✅"))
-            st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
-            if passed == len(rows):
-                st.success(f"All {len(rows)} input checks passed.")
-            else:
-                st.error(f"{len(rows) - passed} of {len(rows)} input checks failed.")
 
 
 def page_trends(user_id):
