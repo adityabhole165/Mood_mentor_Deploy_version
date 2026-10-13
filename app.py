@@ -116,11 +116,55 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {{
     visibility: hidden;
 }}
 
-
 [data-testid="stHeader"] {{
-    background: var(--bg) !important;
+    display: none !important;
 }}
 
+/* ---------- Hide Streamlit header on ALL screen sizes ---------- */
+[data-testid="stHeader"],
+header[data-testid="stHeader"],
+[data-testid="stDecoration"],
+[data-testid="stToolbar"] {{
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+}}
+
+/* Mobile (phones) */
+@media (max-width: 768px) {{
+    [data-testid="stHeader"],
+    header[data-testid="stHeader"] {{
+        display: none !important;
+    }}
+    .block-container {{
+        padding-top: 1rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }}
+}}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {{
+    [data-testid="stHeader"],
+    header[data-testid="stHeader"] {{
+        display: none !important;
+    }}
+    .block-container {{
+        padding-top: 1.5rem !important;
+    }}
+}}
+
+/* Desktop */
+@media (min-width: 1025px) {{
+    [data-testid="stHeader"],
+    header[data-testid="stHeader"] {{
+        display: none !important;
+    }}
+    .block-container {{
+        padding-top: 2rem !important;
+    }}
+}}
 
 .block-container {{
     padding-top: 2rem;
@@ -614,11 +658,7 @@ div[data-baseweb="popover"]:has([data-testid="stPopoverBody"]) > div {{
 @media (max-width: 700px) {{
     .hero {{ padding: 1.3rem; }}
     .hero h1 {{ font-size: 1.6rem; }}
-     [data-testid="stHeader"] {{
-            background: var(--bg) !important;
-    }}
 }}
-
 </style>
 """,
     unsafe_allow_html=True,
